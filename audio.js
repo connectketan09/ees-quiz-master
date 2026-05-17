@@ -207,20 +207,25 @@ class VoiceEngine {
     
     setVoice() {
         const voices = this.synth.getVoices();
-        // Try finding Indian English or Hindi for KBC feel
-        this.voice = voices.find(v => v.lang.includes('en-IN') || v.lang.includes('hi-IN')) || voices[0];
+        // Try finding a deep male voice
+        this.voice = voices.find(v => (v.name.toLowerCase().includes('male') || v.name.toLowerCase().includes('guy')) && v.lang.includes('en')) 
+                  || voices.find(v => v.lang.includes('en-IN')) 
+                  || voices[0];
     }
     
     speak(text, onEnd = null) {
-        if (audioEngine.isMuted) return;
+        if (audioEngine.isMuted) {
+            if (onEnd) setTimeout(onEnd, 300); // Trigger callback quickly if muted
+            return;
+        }
         
         if (this.synth.speaking) {
             this.synth.cancel();
         }
         const utterance = new SpeechSynthesisUtterance(text);
         if (this.voice) utterance.voice = this.voice;
-        utterance.rate = 0.85; // Slightly slower
-        utterance.pitch = 0.9; // Deep dramatic voice
+        utterance.rate = 1.2; // Faster for addictive gameplay
+        utterance.pitch = 0.5; // Deep dramatic "mendeep" voice
         
         if (onEnd) {
             utterance.onend = onEnd;

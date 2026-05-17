@@ -141,7 +141,7 @@ const quizEngine = {
         clickedBtn.classList.add('pulse');
         
         voiceEngine.speak(`Option ${prefix[selectedIdx]} lock kiya jaye...`, () => {
-            // Wait 2 seconds for suspense
+            // Wait 0.5 seconds for fast suspense
             setTimeout(() => {
                 clickedBtn.classList.remove('locked', 'pulse');
                 
@@ -158,8 +158,8 @@ const quizEngine = {
                 }
                 
                 this.userAnswers.push(selectedIdx);
-                setTimeout(() => this.nextQuestion(), 4000); // 4 seconds delay to move to next
-            }, 2500);
+                setTimeout(() => this.nextQuestion(), 1500); // 1.5 seconds delay to move to next
+            }, 500);
         });
     },
 
@@ -175,7 +175,7 @@ const quizEngine = {
         voiceEngine.speak("Time's up! The correct answer was Option " + ['A','B','C','D'][q.a]);
         
         this.userAnswers.push(-1);
-        setTimeout(() => this.nextQuestion(), 4000);
+        setTimeout(() => this.nextQuestion(), 1500);
     },
 
     use5050: function() {
@@ -213,6 +213,22 @@ const quizEngine = {
                 this.loadQuestion();
             }
         }, 1500);
+    },
+
+    skipQuestion: function() {
+        if (this.isAnswered) return;
+        audioEngine.playClick();
+        this.isAnswered = true;
+        clearInterval(this.timer);
+        voiceEngine.stop();
+        audioEngine.stopSuspenseBGM();
+        
+        const q = this.questions[this.currentIdx];
+        document.getElementById('opt-' + q.a).classList.add('correct');
+        voiceEngine.speak("Question skipped. Correct answer is Option " + ['A','B','C','D'][q.a]);
+        
+        this.userAnswers.push(-1); 
+        setTimeout(() => this.nextQuestion(), 1500);
     },
 
     nextQuestion: function() {

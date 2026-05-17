@@ -1,19 +1,19 @@
 
 :root {
-    --primary: #1e1b4b; /* deep indigo */
-    --primary-hover: #312e81;
-    --secondary: #4338ca;
+    --primary: #064e3b; /* dark green */
+    --primary-hover: #065f46;
+    --secondary: #059669; /* emerald */
     --accent: #fbbf24; /* gold */
     --accent-hover: #f59e0b;
-    --bg-dark: #020617; /* very dark blue */
-    --glass: rgba(15, 23, 42, 0.8);
+    --bg-dark: #022c22; /* very dark green */
+    --glass: rgba(2, 44, 34, 0.8);
     --glass-border: rgba(251, 191, 36, 0.4);
     --text-white: #f8fafc;
-    --text-dim: #c7d2fe;
-    --success: #22c55e;
+    --text-dim: #a7f3d0;
+    --success: #10b981;
     --error: #ef4444;
     --warning: #f59e0b;
-    --kbc-blue: #0f172a;
+    --kbc-blue: #064e3b;
     --kbc-border: #fbbf24;
 }
 
@@ -25,7 +25,7 @@
 }
 
 body {
-    background: radial-gradient(circle at center, #312e81 0%, #020617 100%);
+    background: radial-gradient(circle at center, #065f46 0%, #022c22 100%);
     background-attachment: fixed;
     color: var(--text-white);
     min-height: 100vh;
@@ -41,7 +41,7 @@ body::before {
     content: '';
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
-    background: radial-gradient(circle at 15% 50%, rgba(67, 56, 202, 0.4), transparent 25%),
+    background: radial-gradient(circle at 15% 50%, rgba(5, 150, 105, 0.4), transparent 25%),
                 radial-gradient(circle at 85% 30%, rgba(251, 191, 36, 0.15), transparent 25%);
     z-index: -1;
     pointer-events: none;
@@ -54,12 +54,12 @@ body::before {
 }
 
 .kbc-card {
-    background: linear-gradient(180deg, rgba(30, 27, 75, 0.9) 0%, rgba(2, 6, 23, 0.95) 100%);
+    background: linear-gradient(180deg, rgba(6, 78, 59, 0.9) 0%, rgba(2, 44, 34, 0.95) 100%);
     backdrop-filter: blur(10px);
     border: 2px solid var(--glass-border);
     border-radius: 20px;
     padding: 2rem;
-    box-shadow: 0 0 40px rgba(67, 56, 202, 0.5), inset 0 0 20px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 40px rgba(5, 150, 105, 0.5), inset 0 0 20px rgba(0, 0, 0, 0.5);
 }
 
 .screen {
@@ -194,7 +194,7 @@ select option {
 }
 
 .lifeline-btn {
-    background: radial-gradient(circle at center, #1e1b4b, #020617);
+    background: radial-gradient(circle at center, #064e3b, #022c22);
     border: 2px solid var(--accent);
     color: var(--accent);
     padding: 0.6rem 1rem;
@@ -332,13 +332,13 @@ select option {
     content: '';
     position: absolute;
     top: 2px; left: 0; right: 0; bottom: 2px;
-    background: linear-gradient(180deg, var(--bg-dark), #1e1b4b);
+    background: linear-gradient(180deg, var(--bg-dark), #064e3b);
     z-index: 0;
     transition: all 0.2s ease;
 }
 
 .kbc-option-box:hover::before {
-    background: linear-gradient(180deg, #1e1b4b, var(--primary-hover));
+    background: linear-gradient(180deg, #064e3b, var(--primary-hover));
 }
 
 .kbc-option-box.locked::before {
@@ -527,8 +527,8 @@ select option {
     text-shadow: 0 0 10px rgba(251, 191, 36, 0.5), 0 0 20px rgba(251, 191, 36, 0.3);
 }
 @keyframes glowPulse {
-    0% { box-shadow: 0 0 10px rgba(67, 56, 202, 0.5); }
-    100% { box-shadow: 0 0 30px rgba(67, 56, 202, 0.8), inset 0 0 15px rgba(67, 56, 202, 0.5); }
+    0% { box-shadow: 0 0 10px rgba(5, 150, 105, 0.5); }
+    100% { box-shadow: 0 0 30px rgba(5, 150, 105, 0.8), inset 0 0 15px rgba(5, 150, 105, 0.5); }
 }
 .audio-controls {
     position: absolute;
